@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	//id 'net.ltgt.apt' version '0.8'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.piketalks'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	compile group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.10.5'
+	compile group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.10.5'
+	compile group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.10.5'
+	compile group: 'org.mapstruct', name: 'mapstruct', version:'1.3.1.Final'
+	compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: '1.3.61'
+	compile group: 'com.github.marlonlom', name: 'timeago', version: '3.0.1'
+	testCompile group: 'org.jetbrains.kotlin', name: 'kotlin-test-junit', version: '1.3.72'
+	compileOnly 'org.mapstruct:mapstruct-processor:1.3.1.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.3.1.Final'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	useJUnitPlatform()
+}
